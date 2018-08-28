@@ -22,14 +22,14 @@ class Title(scene.Scene):
 
     def render(self, surface):
         # background
-        surface.fill(colors.GRAY)
+        surface.fill(colors.PERU)
 
         # show title
-        fontT = textUtil.setupFont(fonts.FMONO, fonts.FXLG)
-        textT = textUtil.renderText(constants.TITLE, fontT, colors.WHITE)
+        fontT = textUtil.setupFont(fonts.FMONO, fonts.FXXL)
+        textT = textUtil.renderText(constants.TITLE, fontT, colors.DARKGREEN)
         textUtil.drawText(surface, textT, constants.SSIZE[0]//2 - textT.get_width()//2, constants.SSIZE[1]//2 - textT.get_height()//2)
         
         # show subtitle
-        fontS = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
-        textS = textUtil.renderText(constants.SUBTITLE, fontS, colors.WHITE)
+        fontS = textUtil.setupFont(fonts.FMONO, fonts.FXLG)
+        textS = textUtil.renderText(constants.SUBTITLE, fontS, colors.LIMEGREEN)
         textUtil.drawText(surface, textS, constants.SSIZE[0]//2 - textS.get_width()//2, (constants.SSIZE[1]//2) + 20)

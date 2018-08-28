@@ -1,6 +1,7 @@
 import pygame
 from globalVals import *
 from scenes import *
+from util import *
 
 class Main():
     def __init__(self):
@@ -36,6 +37,11 @@ class Main():
             
             # rendering
             self.scene.render(self.surface)
+
+            if flags.debug:
+                font = textUtil.setupFont(fonts.FMONO, fonts.FSML)
+                text = textUtil.renderText(str(round(self.clock.get_fps())), font, colors.BLACK)
+                textUtil.drawText(self.surface, text, constants.SSIZE[0] - text.get_width(), text.get_height())
 
             # set the next scene
             self.scene = self.scene.nextScene

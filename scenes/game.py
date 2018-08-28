@@ -9,10 +9,13 @@ class Game(scene.Scene):
     def events(self, events, keys):
         for event in events:
             if event.type == pygame.KEYDOWN:
-                pass
+                if event.key == pygame.K_ESCAPE:
+                    flags.done = True
+            elif event.type == pygame.QUIT:
+                flags.done = True
 
     def update(self):
         pass
 
     def render(self, surface):
-        surface.fill(colors.MAGENTA)
+        surface.fill(colors.BEIGE)

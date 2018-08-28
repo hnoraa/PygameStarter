@@ -1,5 +1,6 @@
 import pygame
 from . import scene
+from . import title
 from globalVals import *
 
 class GameOver(scene.Scene):
@@ -10,7 +11,11 @@ class GameOver(scene.Scene):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    # quit
                     flags.done = True
+                elif event.key == pygame.K_ENTER or event.key == pygame.K_SPACE:
+                    # go back to title screen
+                    self.transition(title.Title())
             elif event.type == pygame.QUIT:
                 flags.done = True
 

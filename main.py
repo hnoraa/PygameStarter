@@ -39,6 +39,7 @@ class Main():
             self.scene.render(self.surface)
 
             if flags.debug:
+                # show fps
                 font = textUtil.setupFont(fonts.FMONO, fonts.FSML)
                 text = textUtil.renderText(str(round(self.clock.get_fps())), font, colors.BLACK)
                 textUtil.drawText(self.surface, text, constants.SSIZE[0] - text.get_width(), text.get_height())

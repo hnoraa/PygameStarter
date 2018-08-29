@@ -1,0 +1,15 @@
+{
+	"screenWidth": 800,
+	"screenHeight": 600,
+	"debug": true,
+	"useCustomFont": true,
+	"assetsFolder": "assets",
+	"imgsFolder": "imgs",
+	"iconsFolder": "icons",
+	"fontsFolder": "fonts",
+	"audioFolder": "audio",
+	"serifFont": "Times New Roman",
+	"sansSerifFont": "Times New Roman",
+	"monospaceFont": "Courier New",
+	"customFont": "retganon"
+}

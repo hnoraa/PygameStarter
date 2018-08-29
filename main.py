@@ -9,6 +9,9 @@ class Main():
         pygame.init()
         pygame.font.init()
 
+        # check for config file
+        configUtil.loadConfig()
+
         # set up window
         self.surface = pygame.display.set_mode(constants.SSIZE)
         pygame.display.set_caption(constants.TITLE)

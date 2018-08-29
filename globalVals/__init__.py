@@ -1,1 +1,1 @@
-__all__ = ['colors', 'config', 'constants', 'flags', 'fonts']
+__all__ = ['colors', 'config', 'constants', 'flags', 'fonts', 'gameConfig']

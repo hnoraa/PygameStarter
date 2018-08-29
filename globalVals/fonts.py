@@ -5,10 +5,10 @@ FMONO = 'Courier New'
 FCUST = 'retganon.ttf'
 
 # sizes
-FXXS = 8
-FXSM = 10
-FSML = 11
-FMED = 12
-FLRG = 16
+FXXS = 10
+FXSM = 12
+FSML = 14
+FMED = 16
+FLRG = 20
 FXLG = 24
 FXXL = 48

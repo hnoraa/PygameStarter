@@ -1,6 +1,7 @@
 import pygame
 from . import scene
 from . import game
+from . import loadGame
 from globalVals import *
 from util import *
 
@@ -24,24 +25,53 @@ class Title(scene.Scene):
         self.textSOffsetY = (self.textT.get_height() - 30)
 
         # options
+        self.selectedIndex = 0  # current item
         self.options = ['New', 'Load', 'Quit']
         self.fontO = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
-        self.optionsText = []
         self.optionsOffsetY = self.midY + self.textT.get_height()
+        self.renderOptions()
+
+    def renderOptions(self):
+        self.optionsText = []
+
         for i in range(len(self.options)):
-            self.optionsText.append(textUtil.renderText(self.options[i], self.fontO, colors.BLACK))
+            if not self.selectedIndex == i:
+                color = colors.BLACK
+            else:
+                color = colors.WHITE
+            self.optionsText.append(textUtil.renderText(self.options[i], self.fontO, color))
 
     def events(self, events, keys):
         for event in events:
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                     flags.done = True
-                self.transition(game.Game())
+                elif event.key == pygame.K_UP:
+                    # navigate up through menu options
+                    if self.selectedIndex > 0:
+                        self.selectedIndex -= 1
+                    else:
+                        self.selectedIndex = len(self.options) - 1
+                elif event.key == pygame.K_DOWN:
+                    # navigate down through menu options
+                    if self.selectedIndex < len(self.options) - 1:
+                        self.selectedIndex += 1
+                    else:
+                        self.selectedIndex = 0
+                elif event.key == pygame.K_RETURN:
+                    # menu item 'press'
+                    if self.selectedIndex == 0:
+                        self.transition(game.Game())
+                    elif self.selectedIndex == 1:
+                        self.transition(loadGame.LoadGame())
+                    else:
+                        flags.done = True
             elif event.type == pygame.QUIT:
                 flags.done = True
 
     def update(self):
-        pass
+       # highlight the correct option
+       self.renderOptions()
 
     def render(self, surface):
         # background

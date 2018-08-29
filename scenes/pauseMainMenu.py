@@ -8,7 +8,7 @@ class PauseMenuMain(scene.Scene):
     def __init__(self):
         super().__init__()
 
-        # setip main title
+        # setup main title
         self.fontT = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
         self.textT = textUtil.renderText('Main Menu', self.fontT, colors.BLUE)
 

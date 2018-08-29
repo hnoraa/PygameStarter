@@ -27,8 +27,10 @@ class Title(scene.Scene):
 
         # game saves
         self.selectedGame = 0
-        self.gameSaves = []
-        self.fontG = textUtil.setupFont(fonts.FMONO, fonts.FMED)
+        self.gameSaves = ['save1', 'save2', 'save3']
+
+        self.fontG = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
+        self.gameSavesOffsetY = self.gameSaveRect.top
         self.renderGameSaves()
 
         # options
@@ -53,10 +55,11 @@ class Title(scene.Scene):
         
         for i in range(len(self.gameSaves)):
             if not self.selectedGame == i:
-                textColor = color.SILVER
+                textColor = colors.DIMGRAY
             else:
-                textColor = color.WHITE
-            self.gameSavesText.append(textUtil.renderText(self.gameSaves[i]['name'], self.fontG, color))
+                textColor = colors.WHITE
+            #self.gameSavesText.append(textUtil.renderText(self.gameSaves[i]['name'], self.fontG, textColor))
+            self.gameSavesText.append(textUtil.renderText(self.gameSaves[i], self.fontG, textColor))
 
     def events(self, events, keys):
         for event in events:
@@ -65,16 +68,16 @@ class Title(scene.Scene):
                     flags.done = True
                 elif event.key == pygame.K_UP:
                     # navigate up through game saves
-                    if self.selectedGame < len(self.options) - 1:
-                        self.selectedGame += 1
-                    else:
-                        self.selectedGame = 0
-                elif event.key == pygame.K_DOWN:
-                    # navigate down through game saves
                     if self.selectedGame > 0:
                         self.selectedGame -= 1
                     else:
                         self.selectedGame = len(self.options) - 1
+                elif event.key == pygame.K_DOWN:
+                    # navigate down through game saves
+                    if self.selectedGame < len(self.options) - 1:
+                        self.selectedGame += 1
+                    else:
+                        self.selectedGame = 0
                 elif event.key == pygame.K_RIGHT:
                     # navigate right through game options
                     if self.selectedIndex < len(self.options) - 1:
@@ -92,6 +95,7 @@ class Title(scene.Scene):
                     if self.selectedIndex == 0:
                         # load selected game save
                         print('Loading...')
+                        print(self.gameSaves[self.selectedGame])
                     elif self.selectedIndex == 1:
                         # overwrite selected game save
                         print('New/Delete game save')
@@ -117,9 +121,12 @@ class Title(scene.Scene):
 
         # show game saves background
         pygame.draw.rect(surface, colors.BLACK, self.gameSaveRect, 0)
+
         # show game saves
-        for i in range(len(self.gameSaves)):
-            pass
+        x = self.gameSaveRect.left + 20
+        textUtil.drawText(surface, self.gameSavesText[0], x, self.gameSaveRect.top + self.gameSavesText[0].get_height())
+        textUtil.drawText(surface, self.gameSavesText[1], x, self.gameSaveRect.centery - (self.gameSavesText[1].get_height()//2))
+        textUtil.drawText(surface, self.gameSavesText[2], x, self.gameSaveRect.bottom - self.gameSavesText[2].get_height() * 2)
 
         # show options
         y = self.optionsText[0].get_height() + self.optionsOffsetY

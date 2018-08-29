@@ -1,5 +1,4 @@
 import pygame
-import sys
 import os
 from globalVals import *
 
@@ -10,7 +9,7 @@ def setupFont(family, size):
         return pygame.font.SysFont(family, size)
 
 def renderText(msg, font, color):
-    return font.render(msg, True, color)
+    return font.render(msg, True, color, )
 
 def drawText(surface, textObj, x, y):
     surface.blit(textObj, (x, y))

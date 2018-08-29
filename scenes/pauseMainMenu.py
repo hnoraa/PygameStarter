@@ -25,4 +25,4 @@ class PauseMenuMain(scene.Scene):
         # menu title
         fontT = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
         textT = textUtil.renderText('Paused', fontT, colors.BLUE)
-        textUtil.drawText(surface, textT, constants.SSIZE[0]//2 - textT.get_width()//2, textT.get_height() + 10)
+        textUtil.drawText(surface, textT, constants.SSIZE[0]//2 - textT.get_width()//2, 10)

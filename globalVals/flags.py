@@ -1,3 +1,3 @@
 done = False
-debug = True
+debug = False
 useCustomFont = True

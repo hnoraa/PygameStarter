@@ -6,7 +6,7 @@ Starter template for pygame
 - Pygame 1.9.3
 
 ## Config File
-The config file `config.json` goes in the base of the assets folder. The following values (shown in the format) can be customized.
+The config file `config.json` goes in the base of the assets folder. The following values (shown in the format below) can be customized.
 
 Format (example):
 ```javascript

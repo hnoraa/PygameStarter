@@ -8,7 +8,7 @@
 	"fontsFolder": "fonts",
 	"audioFolder": "audio",
 	"serifFont": "Times New Roman",
-	"sansSerifFont": "Times New Roman",
+	"sansSerifFont": "Arial",
 	"monospaceFont": "Courier New",
 	"customFont": "retganon"
 }

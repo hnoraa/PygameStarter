@@ -8,14 +8,13 @@ def createConfigFilePath():
 
 def loadConfig():
     cfg = createConfigFilePath()
-    print(cfg)
+    
     if os.path.isfile(cfg):
         # open the file
         cfgFile = open(cfg, 'r')
 
         # process
         cfgJson = json.loads(cfgFile.read())
-        print(cfgJson)
 
         # set constants
         constants.SSIZE = (cfgJson['screenWidth'], cfgJson['screenHeight'])

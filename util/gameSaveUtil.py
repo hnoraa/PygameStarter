@@ -13,7 +13,7 @@ def newSaveFile(filename, data):
     newFile.close()
 
 def overwriteFile(filename, data):
-    if not saveFileIsEmpty():
+    if not saveFileIsEmpty(filename):
         deleteSaveFile(filename)
 
     newSaveFile(filename, data)

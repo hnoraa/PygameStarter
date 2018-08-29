@@ -27,7 +27,7 @@ class Title(scene.Scene):
 
         # game saves
         self.selectedGame = 0
-        self.gameSaves = ['save1', 'save2', 'save3']
+        self.gameSaves = gameSaveUtil.
 
         self.fontG = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
         self.gameSavesOffsetY = self.gameSaveRect.top

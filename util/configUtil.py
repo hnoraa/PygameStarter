@@ -25,7 +25,6 @@ def loadConfig():
         flags.USECUSTOMFONT = cfgJson['useCustomFont']
 
         # set asset values
-        config.ASSETSPATH = cfgJson['assetsFolder']
         config.IMGPATH = cfgJson['imgsFolder']
         config.ICONPATH = cfgJson['iconsFolder']
         config.AUDIOPATH = cfgJson['audioFolder']

@@ -3,7 +3,6 @@
 	"screenHeight": 600,
 	"debug": true,
 	"useCustomFont": true,
-	"assetsFolder": "assets",
 	"imgsFolder": "imgs",
 	"iconsFolder": "icons",
 	"fontsFolder": "fonts",

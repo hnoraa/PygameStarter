@@ -27,7 +27,7 @@ class Title(scene.Scene):
 
         # game saves
         self.selectedGame = 0
-        self.gameSaves = gameSaveUtil.
+        self.gameSaves = gameSaveUtil.getSaveFiles()
 
         self.fontG = textUtil.setupFont(fonts.FMONO, fonts.FLRG)
         self.gameSavesOffsetY = self.gameSaveRect.top
@@ -58,8 +58,10 @@ class Title(scene.Scene):
                 textColor = colors.DIMGRAY
             else:
                 textColor = colors.WHITE
-            #self.gameSavesText.append(textUtil.renderText(self.gameSaves[i]['name'], self.fontG, textColor))
-            self.gameSavesText.append(textUtil.renderText(self.gameSaves[i], self.fontG, textColor))
+            if 'name' in self.gameSaves[i]['data']:
+                self.gameSavesText.append(textUtil.renderText(self.gameSaves[i]['data']['name'], self.fontG, textColor))
+            else:
+                self.gameSavesText.append(textUtil.renderText('<No Save Data>', self.fontG, textColor))
 
     def events(self, events, keys):
         for event in events:
@@ -93,16 +95,27 @@ class Title(scene.Scene):
                 elif event.key == pygame.K_RETURN:
                     # actions
                     if self.selectedIndex == 0:
-                        # load selected game save
-                        print('Loading...')
-                        print(self.gameSaves[self.selectedGame])
+                        # check if save game is empty
+                        if not self.gameSaves[self.selectedGame]:
+                            # new game
+                            self.newGame()
+                        else:
+                            # load selected game save
+                            self.loadGame()
+                        
                     elif self.selectedIndex == 1:
                         # overwrite selected game save
-                        print('New/Delete game save')
+                        self.newGame()
                     else:
                         flags.done = True
             elif event.type == pygame.QUIT:
                 flags.done = True
+
+    def newGame(self):
+        pass
+
+    def loadGame(self):
+        gameSaveUtil.selectGameObject()
 
     def update(self):
        # highlight the correct option and game save
